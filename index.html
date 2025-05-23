@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LLM Info App</title>
+    <title>LLM Inference Engine Simulator - Redesigned Layout</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom CSS for a nicer design */
@@ -608,14 +608,14 @@
             </div>
 
             <div class="tab-buttons">
-                <button class="tab-button active" data-tab="simulation">Simulation</button>
-                <button class="tab-button" data-tab="settings">Simulation Settings</button>
                 <button class="tab-button" data-tab="recommendations">LLM Recommendations</button>
                 <button class="tab-button" data-tab="model-details">Model Details</button>
                 <button class="tab-button" data-tab="companies">Companies & AI</button>
                 <button class="tab-button" data-tab="people">Top People</button>
                 <button class="tab-button" data-tab="frameworks-finetuning">Frameworks & Fine-tuning</button>
                 <button class="tab-button" data-tab="enterprise-deployment">Enterprise Deployment</button>
+                <button class="tab-button" data-tab="settings">Simulation Settings</button>
+                <button class="tab-button active" data-tab="simulation">Simulation</button>
             </div>
 
             <div id="simulation-tab" class="tab-content active">
@@ -848,6 +848,7 @@
                             <div class="accordion-content">
                                 <ul>
                                     <li><strong>Models:</strong> GPT-3.5, GPT-4, GPT-4o (multimodal), DALL-E, Whisper.</li>
+                                    <li><strong>Origin:</strong> San Francisco, California, USA. Incorporated in December 2015.</li>
                                     <li><strong>Best for:</strong> General-purpose AI, advanced reasoning, creative content, image generation, speech-to-text. Widely adopted, strong ecosystem.</li>
                                 </ul>
                             </div>
@@ -857,6 +858,7 @@
                             <div class="accordion-content">
                                 <ul>
                                     <li><strong>Models:</strong> Claude (Opus, Sonnet, Haiku).</li>
+                                    <li><strong>Origin:</strong> San Francisco, California, USA. Incorporated in 2021.</li>
                                     <li><strong>Best for:</strong> Enterprise applications, safety-focused AI, long context windows, complex reasoning, legal and medical text processing.</li>
                                 </ul>
                             </div>
@@ -866,6 +868,7 @@
                             <div class="accordion-content">
                                 <ul>
                                     <li><strong>Models:</strong> Gemini (Pro, Ultra, Flash), Imagen, Codey, Chirp.</li>
+                                    <li><strong>Origin:</strong> Mountain View, California, USA. Google was founded in 1998.</li>
                                     <li><strong>Best for:</b> Multimodal applications, enterprise solutions, integrated with Google Cloud ecosystem, strong for data analytics and code generation.</li>
                                 </ul>
                             </div>
@@ -875,6 +878,7 @@
                             <div class="accordion-content">
                                 <ul>
                                     <li><strong>Models:</strong> Azure OpenAI Service (GPT-3.5, GPT-4), Phi-3, Llama 2.</li>
+                                    <li><strong>Origin:</strong> Redmond, Washington, USA. Microsoft was founded in 1975.</li>
                                     <li><strong>Best for:</strong> Enterprises already on Azure, strong security and compliance features, integration with Microsoft services.</li>
                                 </ul>
                             </div>
@@ -884,6 +888,7 @@
                             <div class="accordion-content">
                                 <ul>
                                     <li><strong>Models:</strong> Command (R, R+), Embed, Rerank.</li>
+                                    <li><strong>Origin:</strong> Toronto, Ontario, Canada. Incorporated in 2019.</li>
                                     <li><strong>Best for:</b> Enterprise search, RAG (Retrieval Augmented Generation), multilingual applications, semantic search, and robust conversational AI.</li>
                                 </ul>
                             </div>
@@ -893,6 +898,7 @@
                             <div class="accordion-content">
                                 <ul>
                                     <li><strong>Models:</strong> Mistral Large, Mistral Small, Mixtral 8x7B, Embed.</li>
+                                    <li><strong>Origin:</strong> Paris, France. Incorporated in April 2023.</li>
                                     <li><strong>Best for:</strong> Efficient and powerful models, strong performance for their size, good for cost-sensitive applications, growing enterprise focus.</li>
                                 </ul>
                             </div>
@@ -912,6 +918,7 @@
                                 <ul>
                                     <li><strong>Purpose:</strong> General-purpose text generation, coding, reasoning.</li>
                                     <li><strong>Input Modalities:</strong> 📄 Text-based.</li>
+                                    <li><strong>Origin:</strong> Developed by Meta AI, primarily out of Menlo Park, California, USA.</li>
                                     <li><strong>Key Features for Local Use:</strong> State-of-the-art performance, improved instruction following. 8B and 70B parameter versions are widely available in quantized formats (GGUF) ideal for local running.</li>
                                     <li><strong>Local Use:</strong>
                                         <ul>
@@ -926,6 +933,7 @@
                             <summary class="accordion-summary">Mistral 7B & Mixtral 8x7B (Mistral AI) - Optimized for Local</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Origin:</strong> Developed by Mistral AI, a French company based in Paris, France.</li>
                                     <li><strong>Mistral 7B:</strong>
                                         <ul>
                                             <li><strong>Purpose:</strong> Highly efficient and powerful for its size.</li>
@@ -949,6 +957,7 @@
                                 <ul>
                                     <li><strong>Purpose:</strong> Small, high-quality models optimized for personal devices. Mini (3.8B), Small (7B), Medium (14B).</li>
                                     <li><strong>Input Modalities:</strong> 📄 Text. Phi-3-vision adds 🖼️ image input, feasible locally.</li>
+                                    <li><strong>Origin:</strong> Developed by Microsoft, with AI research centers globally, including Redmond, Washington, USA.</li>
                                     <li><strong>Key Features for Local Use:</strong> Trained on "textbook-quality" data, surprisingly capable for their small local footprint. Resource-efficient.</li>
                                     <li><strong>Local Use:</strong>
                                         <ul>
@@ -964,6 +973,7 @@
                             <div class="accordion-content">
                                 <ul>
                                     <li><strong>Purpose:</strong> Lightweight open models (2B, 7B, 9B). CodeGemma for code.</li>
+                                    <li><strong>Origin:</strong> Developed by Google DeepMind, with primary research in London, UK, and Mountain View, California, USA.</li>
                                     <li><strong>Key Features for Local Use:</strong> Built with Gemini tech, designed for responsible AI. Good for trying Google's model architecture locally.</li>
                                     <li><strong>Local Use:</strong> Gemma 2B and 7B are well-suited for local inference on Apple Silicon with 8GB-16GB RAM. Good balance for local tasks.</li>
                                 </ul>
@@ -974,6 +984,7 @@
                             <div class="accordion-content">
                                 <ul>
                                     <li><strong>Purpose:</strong> Enterprise-focused, multilingual, RAG-optimized. Command R (35B), Command R+ (104B).</li>
+                                    <li><strong>Origin:</strong> Developed by Cohere, a Canadian company based in Toronto, Ontario, Canada.</li>
                                     <li><strong>Key Features:</strong> Long-context, tool use.</li>
                                     <li><strong>Local Use:</strong> Weights are available for research, but these are large models. Command R (35B) might run locally on very high-RAM systems (64GB++) with aggressive quantization. R+ (104B) is extremely demanding for local setups. <span class="note">Typically accessed via API for enterprise use rather than direct local deployment by end-users.</span></li>
                                 </ul>
@@ -991,6 +1002,7 @@
                                 <ul>
                                     <li><strong>Purpose:</strong> Flagship multimodal model, highly capable across text, audio, and vision.</li>
                                     <li><strong>Input Modalities:</strong> 📄 Text, 🖼️ Image, 🎧 Audio, 📹 Video.</li>
+                                    <li><strong>Origin:</strong> Developed by OpenAI, based in San Francisco, California, USA.</li>
                                     <li><strong>Key Features:</strong> State-of-the-art performance, fast response times for multimodal inputs, cost-effective compared to previous GPT-4 versions.</li>
                                     <li><strong>Use Case:</strong> Advanced chatbots, content creation, data analysis, multimodal understanding, real-time voice interaction.</li>
                                 </ul>
@@ -1002,6 +1014,7 @@
                                 <ul>
                                     <li><strong>Purpose:</strong> Family of models (Opus, Sonnet, Haiku) balancing intelligence, speed, and cost. Designed for safety and helpfulness.</li>
                                     <li><strong>Input Modalities:</b> 📄 Text, 🖼️ Image.</li>
+                                    <li><strong>Origin:</strong> Developed by Anthropic, based in San Francisco, California, USA.</li>
                                     <li><strong>Key Features:</strong> Strong reasoning, long context windows (up to 200K tokens), robust for enterprise applications, excels in complex tasks requiring deep understanding.</li>
                                     <li><strong>Use Case:</strong> Legal document review, research assistance, customer service automation, code generation, creative writing.</li>
                                 </ul>
@@ -1013,6 +1026,7 @@
                                 <ul>
                                     <li><strong>Purpose:</strong> Multimodal model with a massive context window for complex reasoning across modalities.</li>
                                     <li><strong>Input Modalities:</strong> 📄 Text, 🖼️ Image, 🎧 Audio, 📹 Video.</li>
+                                    <li><strong>Origin:</strong> Developed by Google DeepMind, with primary research in London, UK, and Mountain View, California, USA.</li>
                                     <li><strong>Key Features:</strong> Industry-leading 1 million token context window, multimodal reasoning, strong performance on code and long documents.</li>
                                     <li><strong>Use Case:</strong> Analyzing entire codebases, summarizing long videos, deep document analysis, complex data extraction from multiple sources.</li>
                                 </ul>
@@ -1024,6 +1038,7 @@
                                 <ul>
                                     <li><strong>Purpose:</b> Enterprise-grade, scalable LLM optimized for RAG (Retrieval Augmented Generation) and tool use.</li>
                                     <li><strong>Input Modalities:</strong> 📄 Text.</li>
+                                    <li><strong>Origin:</strong> Developed by Cohere, a Canadian company based in Toronto, Ontario, Canada.</li>
                                     <li><strong>Key Features:</strong> Strong RAG capabilities, multilingual support, high accuracy for enterprise applications, designed for seamless integration with business systems.</li>
                                     <li><strong>Use Case:</strong> Enterprise search, intelligent assistants for employees, automated reporting, data synthesis from private knowledge bases.</li>
                                 </ul>
@@ -1035,6 +1050,7 @@
                                 <ul>
                                     <li><strong>Purpose:</strong> High-quality, efficient Sparse Mixture of Experts (SMoE) model.</li>
                                     <li><strong>Input Modalities:</strong> 📄 Text.</li>
+                                    <li><strong>Origin:</strong> Developed by Mistral AI, a French company based in Paris, France.</li>
                                     <li><strong>Key Features:</strong> Strong performance for its size, efficient inference due to activating only a subset of experts per token, good for general-purpose tasks and coding.</li>
                                     <li><strong>Use Case:</b> Cost-effective API usage, chatbots, summarization, code generation, when a balance of performance and efficiency is needed.</li>
                                 </ul>
@@ -1053,6 +1069,7 @@
                             <summary class="accordion-summary">Apple</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Headquarters:</strong> Cupertino, California, USA.</li>
                                     <li><strong>Contribution:</strong> Apple Silicon (M-series chips) with Unified Memory Architecture and Neural Engine significantly accelerates on-device LLM inference. Core ML framework for deploying models.</li>
                                     <li><strong>Impact:</strong> Enables efficient local execution of models like Llama, Mistral, and Phi directly on Macs, iPhones, and iPads.</li>
                                 </ul>
@@ -1062,6 +1079,7 @@
                             <summary class="accordion-summary">Meta</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Headquarters:</strong> Menlo Park, California, USA. Incorporated in 2004 (as Facebook).</li>
                                     <li><strong>Contribution:</strong> Developed and open-sourced the Llama series of models (Llama 2, Llama 3), which are highly optimized for local and on-device deployment due to their efficient architecture and widespread community support for quantization.</li>
                                     <li><strong>Impact:</strong> Democratized access to powerful LLMs, fostering a vast ecosystem of local AI applications.</li>
                                 </ul>
@@ -1071,6 +1089,7 @@
                             <summary class="accordion-summary">Microsoft</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Headquarters:</strong> Redmond, Washington, USA. Founded in Albuquerque, New Mexico in 1975.</li>
                                     <li><strong>Contribution:</strong> Developed the Phi series of small, high-quality models (Phi-1.5, Phi-2, Phi-3), specifically designed to be highly capable despite their small size, making them ideal for local and edge device inference.</li>
                                     <li><strong>Impact:</b> Demonstrated that powerful AI can exist in compact forms, suitable for resource-constrained environments.</li>
                                 </ul>
@@ -1080,6 +1099,7 @@
                             <summary class="accordion-summary">Mistral AI</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Headquarters:</strong> Paris, France. Incorporated in April 2023.</li>
                                     <li><strong>Contribution:</strong> Created Mistral 7B and Mixtral 8x7B (Sparse Mixture of Experts), models known for their exceptional performance-to-size ratio and efficient architecture, making them excellent candidates for local deployment.</li>
                                     <li><strong>Impact:</strong> Pushed the boundaries of efficient LLM design, enabling high-quality local inference with fewer resources.</li>
                                 </ul>
@@ -1089,6 +1109,7 @@
                             <summary class="accordion-summary">Google</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Headquarters:</strong> Mountain View, California, USA. Founded at Stanford University, California in 1998.</li>
                                     <li><strong>Contribution:</strong> Developed Gemma, a family of lightweight, open models built from the same research and technology used to create the Gemini models. Designed for responsible AI and efficient deployment.</li>
                                     <li><strong>Impact:</strong> Provides a strong open-source option for developers looking to integrate Google's AI advancements into local applications.</li>
                                 </ul>
@@ -1098,6 +1119,7 @@
                             <summary class="accordion-summary">Hugging Face</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Headquarters:</strong> New York, New York, USA and Paris, France. Incorporated in 2016.</li>
                                     <li><strong>Contribution:</strong> Not a model developer in the same vein, but a critical enabler. Provides the Transformers library, Model Hub, and Spaces, which are essential for discovering, downloading, and running open-source LLMs locally.</li>
                                     <li><strong>Impact:</strong> Centralized the open-source AI ecosystem, making local LLM experimentation and deployment vastly more accessible.</li>
                                 </ul>
@@ -1107,6 +1129,7 @@
                             <summary class="accordion-summary">Ollama</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Origin:</strong> USA. Founded in 2023.</li>
                                     <li><strong>Contribution:</strong> Developed an incredibly user-friendly command-line tool and API for running open-source LLMs locally on macOS, Linux, and Windows. Simplifies model downloading, setup, and interaction.</li>
                                     <li><strong>Impact:</strong> Lowered the barrier to entry for running local LLMs, making it accessible to a broader audience of users and developers.</li>
                                 </ul>
@@ -1116,6 +1139,7 @@
                             <summary class="accordion-summary">LM Studio / Jan.ai / GPT4All</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Origin:</strong> Various independent developers/teams, primarily USA-based.</li>
                                     <li><strong>Contribution:</strong> Desktop applications that provide graphical user interfaces (GUIs) for downloading, managing, and interacting with local LLMs (often built on `llama.cpp`).</li>
                                     <li><strong>Impact:</strong> Made local LLM usage accessible to non-technical users, offering a chat-like experience directly on their machines.</li>
                                 </ul>
@@ -1131,6 +1155,7 @@
                             <summary class="accordion-summary">OpenAI</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Headquarters:</strong> San Francisco, California, USA. Incorporated in December 2015.</li>
                                     <li><strong>Focus:</strong> Pioneering large-scale AI models (GPT series, DALL-E) and making them accessible via APIs.</li>
                                     <li><strong>Impact:</strong> Democratized access to cutting-edge generative AI, driving innovation across industries.</li>
                                 </ul>
@@ -1140,6 +1165,7 @@
                             <summary class="accordion-summary">Google</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Headquarters:</strong> Mountain View, California, USA. Founded at Stanford University, California in 1998.</li>
                                     <li><strong>Focus:</strong> Developing multimodal AI models (Gemini series) and offering a comprehensive AI platform (Vertex AI) for cloud-based ML development and deployment.</li>
                                     <li><strong>Impact:</strong> Provides integrated solutions for enterprises, leveraging Google's research in AI and cloud infrastructure.</li>
                                 </ul>
@@ -1149,6 +1175,7 @@
                             <summary class="accordion-summary">Anthropic</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Headquarters:</strong> San Francisco, California, USA. Incorporated in 2021.</li>
                                     <li><strong>Focus:</strong> Building safe and helpful AI systems (Claude series) with an emphasis on responsible development and long context windows.</li>
                                     <li><strong>Impact:</strong> A key player in enterprise AI, offering models designed for reliability and complex business applications.</li>
                                 </ul>
@@ -1158,6 +1185,7 @@
                             <summary class="accordion-summary">Microsoft</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Headquarters:</strong> Redmond, Washington, USA. Founded in Albuquerque, New Mexico in 1975.</li>
                                     <li><strong>Focus:</strong> Integrating AI capabilities (Azure OpenAI Service, Microsoft Copilot) into its cloud platform (Azure) and enterprise products.</li>
                                     <li><strong>Impact:</strong> Enables businesses to leverage advanced AI within their existing Microsoft ecosystems with strong security and compliance.</li>
                                 </ul>
@@ -1167,6 +1195,7 @@
                             <summary class="accordion-summary">Amazon (AWS)</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Headquarters:</strong> Seattle, Washington, USA. Founded in 1994.</li>
                                     <li><strong>Focus:</strong> Providing a wide range of AI/ML services (Amazon SageMaker, Amazon Bedrock) that allow developers to build, train, and deploy models, including foundational models from various providers.</li>
                                     <li><strong>Impact:</strong> Offers flexible and scalable AI infrastructure for diverse use cases, from custom model development to managed LLM services.</li>
                                 </ul>
@@ -1176,6 +1205,7 @@
                             <summary class="accordion-summary">Cohere</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Headquarters:</strong> Toronto, Ontario, Canada. Incorporated in 2019.</li>
                                     <li><strong>Focus:</strong> Developing enterprise-grade LLMs (Command series) and embedding models, with a strong emphasis on RAG and multilingual capabilities.</li>
                                     <li><strong>Impact:</strong> Specializes in solutions for businesses that need robust, context-aware AI for their specific data and applications.</li>
                                 </ul>
@@ -1185,6 +1215,7 @@
                             <summary class="accordion-summary">Mistral AI</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Headquarters:</strong> Paris, France. Incorporated in April 2023.</li>
                                     <li><strong>Models:</strong> Mistral Large, Mistral Small, Mixtral 8x7B, Embed.</li>
                                     <li><strong>Best for:</strong> Efficient and powerful models, strong performance for their size, good for cost-sensitive applications, growing enterprise focus.</li>
                                 </ul>
@@ -1203,6 +1234,8 @@
                             <summary class="accordion-summary">Georgi Gerganov</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Origin:</strong> Bulgaria.</li>
+                                    <li><strong>Key Affiliations/Discoveries:</strong> Creator of `llama.cpp` (open-source project).</li>
                                     <li><strong>Contribution:</strong> Creator of `llama.cpp`, a foundational C/C++ inference engine that enables efficient, quantized execution of LLMs on consumer hardware (including Apple Silicon).</li>
                                     <li><strong>Impact:</strong> Revolutionized local LLM inference, making models like Llama, Mistral, and many others runnable on CPUs and integrated GPUs, powering tools like LM Studio and Ollama.</li>
                                 </ul>
@@ -1212,6 +1245,8 @@
                             <summary class="accordion-summary">Tim Dettmers</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Origin:</strong> Germany.</li>
+                                    <li><strong>Key Affiliations/Discoveries:</strong> Assistant Professor at the University of Washington (Seattle, Washington, USA). Known for work on quantization (e.g., QLoRA) during his PhD at the University of Amsterdam.</li>
                                     <li><strong>Contribution:</strong> Prominent researcher in quantization and efficient deep learning. His work on 8-bit and 4-bit quantization (e.g., QLoRA) is crucial for fitting large models into limited memory.</li>
                                     <li><strong>Impact:</b> Directly enabled the ability to run massive LLMs on consumer GPUs and even CPUs by drastically reducing memory footprint.</li>
                                 </ul>
@@ -1221,6 +1256,8 @@
                             <summary class="accordion-summary">Yann LeCun</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Origin:</strong> Soisy-sous-Montmorency, France.</li>
+                                    <li><strong>Key Affiliations/Discoveries:</strong> Chief AI Scientist at Meta (Menlo Park, California, USA). Professor at New York University (New York, New York, USA). Pioneering work in convolutional neural networks.</li>
                                     <li><strong>Contribution:</strong> Chief AI Scientist at Meta, a strong advocate for open-source AI. His influence supports initiatives like the open release of the Llama models, which are central to local AI development.</li>
                                     <li><strong>Impact:</strong> His advocacy helps drive the availability of powerful models that can be run and fine-tuned locally.</li>
                                 </ul>
@@ -1230,6 +1267,8 @@
                             <summary class="accordion-summary">The Hugging Face Team (esp. core contributors to Transformers)</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Origin:</strong> Global team with primary offices in New York, New York, USA and Paris, France.</li>
+                                    <li><strong>Key Affiliations/Discoveries:</strong> The company Hugging Face Inc.</li>
                                     <li><strong>Contribution:</strong> While many individuals, the collective effort behind the Hugging Face Transformers library and Model Hub has standardized and simplified the process of loading, using, and sharing LLMs, including those for local inference.</li>
                                     <li><strong>Impact:</strong> Created the de facto standard for open-source NLP and LLM development, making local experimentation vastly more accessible.</li>
                                 </ul>
@@ -1239,6 +1278,8 @@
                             <summary class="accordion-summary">Researchers at Microsoft (e.g., for Phi models)</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Origin:</strong> Various research labs globally, including Redmond, Washington, USA.</li>
+                                    <li><strong>Key Affiliations/Discoveries:</strong> Microsoft Research.</li>
                                     <li><strong>Contribution:</strong> The teams behind the Phi series of models have demonstrated that highly capable LLMs can be built with significantly fewer parameters, making them ideal for on-device and local deployment.</li>
                                     <li><strong>Impact:</b> Challenged the notion that "bigger is always better" for LLMs, opening new avenues for efficient local AI.</li>
                                 </ul>
@@ -1248,6 +1289,8 @@
                             <summary class="accordion-summary">Researchers at Mistral AI</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Origin:</strong> Paris, France.</li>
+                                    <li><strong>Key Affiliations/Discoveries:</strong> Mistral AI (company).</li>
                                     <li><strong>Contribution:</strong> Developed highly efficient models like Mistral 7B and Mixtral 8x7B (Sparse Mixture of Experts), which are designed for strong performance with fewer computational resources, making them excellent for local inference.</li>
                                     <li><strong>Impact:</strong> Showcased innovative architectures that provide high-quality results while being more amenable to local deployment.</li>
                                 </ul>
@@ -1263,6 +1306,8 @@
                             <summary class="accordion-summary">Sam Altman (OpenAI)</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Origin:</strong> Chicago, Illinois, USA.</li>
+                                    <li><strong>Key Affiliations/Discoveries:</strong> CEO of OpenAI (San Francisco, California, USA). Previously President of Y Combinator.</li>
                                     <li><strong>Contribution:</strong> CEO of OpenAI, driving the development and widespread adoption of models like GPT-3.5, GPT-4, and GPT-4o.</li>
                                     <li><strong>Impact:</strong> Led the charge in making powerful generative AI accessible to the public and enterprises, significantly shaping the current AI landscape.</li>
                                 </ul>
@@ -1272,6 +1317,8 @@
                             <summary class="accordion-summary">Dario Amodei (Anthropic)</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Origin:</strong> USA.</li>
+                                    <li><strong>Key Affiliations/Discoveries:</strong> CEO and co-founder of Anthropic (San Francisco, California, USA). Previously VP of Research at OpenAI.</li>
                                     <li><strong>Contribution:</strong> CEO and co-founder of Anthropic, focusing on developing safe and responsible AI systems like the Claude series.</li>
                                     <li><strong>Impact:</strong> A key voice and leader in the field of AI safety and alignment, pushing for ethical considerations in large model development.</li>
                                 </ul>
@@ -1281,6 +1328,8 @@
                             <summary class="accordion-summary">Demis Hassabis (Google DeepMind)</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Origin:</strong> London, UK.</li>
+                                    <li><strong>Key Affiliations/Discoveries:</strong> CEO of Google DeepMind (London, UK, and Mountain View, California, USA). Co-founder of DeepMind. PhD in Cognitive Neuroscience from University College London.</li>
                                     <li><strong>Contribution:</strong> CEO of Google DeepMind, overseeing the development of advanced AI, including the Gemini family of models.</li>
                                     <li><strong>Impact:</strong> Leads efforts in foundational AI research and its integration into Google's products and cloud services.</li>
                                 </ul>
@@ -1290,6 +1339,8 @@
                             <summary class="accordion-summary">Andrew Ng (DeepLearning.AI, Landing AI)</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Origin:</strong> London, UK (born); grew up in Hong Kong and Singapore.</li>
+                                    <li><strong>Key Affiliations/Discoveries:</strong> Co-founder of Coursera (Mountain View, California, USA), founder of DeepLearning.AI and Landing AI. Former head of Google Brain and chief scientist at Baidu. Professor at Stanford University (Stanford, California, USA).</li>
                                     <li><strong>Contribution:</strong> Co-founder of Coursera, founder of DeepLearning.AI and Landing AI. Known for popularizing deep learning education and practical AI applications.</li>
                                     <li><strong>Impact:</strong> Educates millions on AI, driving its adoption in various industries, including cloud-based deployments.</li>
                                 </ul>
@@ -1299,6 +1350,8 @@
                             <summary class="accordion-summary">Geoffrey Hinton (University of Toronto, Google)</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Origin:</strong> Wimbledon, London, UK.</li>
+                                    <li><strong>Key Affiliations/Discoveries:</strong> Professor Emeritus at the University of Toronto (Toronto, Ontario, Canada). Former Google Brain researcher. Often referred to as the "Godfather of AI" for his foundational work in neural networks.</li>
                                     <li><strong>Contribution:</strong> "Godfather of AI," pioneering work in neural networks and deep learning.</li>
                                     <li><strong>Impact:</strong> His foundational research is critical to the development of all modern LLMs, whether run locally or in the cloud.</li>
                                 </ul>
@@ -1308,6 +1361,8 @@
                             <summary class="accordion-summary">Oriol Vinyals (Google DeepMind)</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Origin:</strong> Spain.</li>
+                                    <li><strong>Key Affiliations/Discoveries:</strong> Research Scientist at Google DeepMind (London, UK, and Mountain View, California, USA). PhD from Carnegie Mellon University.</li>
                                     <li><strong>Contribution:</strong> Prominent researcher at Google DeepMind, involved in significant advancements in large language models and reinforcement learning.</li>
                                     <li><strong>Impact:</strong> Contributes to the core research that powers many of Google's cloud-based AI capabilities.</li>
                                 </ul>
@@ -1337,6 +1392,7 @@
                             <div class="accordion-content">
                                 <ul>
                                     <li><strong>Purpose:</strong> A C/C++ library for efficient inference of LLMs.</li>
+                                    <li><strong>Origin:</strong> Developed by Georgi Gerganov (Bulgaria).</li>
                                     <li><strong>Key Features:</strong> Highly optimized for CPU and Apple Silicon (Metal), supports various quantization schemes, and is the backbone for many local LLM applications.</li>
                                     <li><strong>Local Use:</strong> Provides the underlying performance for tools like Ollama, LM Studio, and Jan.ai, making local LLM inference fast and accessible.</li>
                                 </ul>
@@ -1379,6 +1435,7 @@
                             <div class="accordion-content">
                                 <ul>
                                     <li><strong>Purpose:</strong> Open Neural Network Exchange (ONNX) is an open format for representing machine learning models. ONNX Runtime is a high-performance inference engine for ONNX models.</li>
+                                    <li><strong>Origin:</strong> ONNX was initially developed by Microsoft and Facebook (Meta).</li>
                                     <li><strong>Key Features:</strong> Enables models to be trained in one framework (e.g., PyTorch) and deployed efficiently in another environment (e.g., a C++ application on a local device). Supports various hardware accelerators.</li>
                                     <li><strong>Local Use:</strong> Provides a standardized way to deploy LLMs locally across different operating systems and hardware, ensuring consistent performance and compatibility.</li>
                                 </ul>
@@ -1394,6 +1451,7 @@
                             <summary class="accordion-summary">TensorFlow & PyTorch - Core ML Frameworks</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Origin:</strong> TensorFlow by Google (Mountain View, California, USA); PyTorch by Facebook (Meta) (Menlo Park, California, USA).</li>
                                     <li><strong>Purpose:</strong> Open-source machine learning frameworks for building and training deep learning models, including LLMs, often in cloud environments.</li>
                                     <li><strong>Key Features:</strong> Extensive libraries, large communities, support for distributed training on cloud GPUs/TPUs, flexible API for custom model architectures.</li>
                                     <li><strong>Cloud Use:</strong> Used by cloud providers and developers to train and fine-tune foundational models, and to build custom AI applications that run on cloud infrastructure.</li>
@@ -1404,6 +1462,7 @@
                             <summary class="accordion-summary">Kubernetes & Docker - Containerization & Orchestration</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Origin:</strong> Kubernetes was originally designed by Google (Mountain View, California, USA); Docker Inc. (San Francisco, California, USA).</li>
                                     <li><strong>Purpose:</strong> Docker for packaging applications into portable containers; Kubernetes for automating deployment, scaling, and management of containerized applications.</li>
                                     <li><strong>Key Features:</strong> Ensures consistent environments from development to production, enables efficient resource utilization, high availability, and scalability for LLM inference services.</li>
                                     <li><strong>Cloud Use:</strong> Standard tools for deploying LLM APIs and microservices on cloud platforms (e.g., Google Kubernetes Engine, Azure Kubernetes Service, Amazon EKS).</li>
@@ -1414,6 +1473,7 @@
                             <summary class="accordion-summary">Cloud ML Platforms (e.g., Vertex AI, Azure ML, SageMaker)</summary>
                             <div class="accordion-content">
                                 <ul>
+                                    <li><strong>Origin:</strong> Vertex AI by Google (Mountain View, California, USA); Azure ML by Microsoft (Redmond, Washington, USA); Amazon SageMaker by Amazon (Seattle, Washington, USA).</li>
                                     <li><strong>Purpose:</strong> Managed services from cloud providers that offer end-to-end MLOps capabilities, from data preparation to model deployment and monitoring.</li>
                                     <li><strong>Key Features:</strong> Pre-built tools for LLM fine-tuning, managed inference endpoints, MLOps automation, integration with other cloud services.</li>
                                     <li><strong>Cloud Use:</strong> Simplifies the deployment and management of LLMs for enterprises, abstracting away complex infrastructure management.</li>
@@ -1480,7 +1540,7 @@
                                 <ul>
                                     <li><strong>Benefit:</strong> Ability to fine-tune LLMs on proprietary datasets without exposing that data to external services, creating highly specialized models.</li>
                                     <li><strong>Mechanism:</strong> Training and fine-tuning pipelines are run on internal infrastructure, allowing for deep customization of models to specific business needs and terminology.</li>
-                                    <li><strong>Use Case:</strong> Developing an LLM specialized in internal company policies, product documentation, or industry-specific jargon.</li>
+                                    <li><strong>Use Case:</b> Developing an LLM specialized in internal company policies, product documentation, or industry-specific jargon.</li>
                                 </ul>
                             </div>
                         </details>
@@ -2405,11 +2465,13 @@
 
         // Initial setup on page load
         window.onload = function() {
-            // Set initial canvas size based on its CSS width/height
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
             populatePresetRadios();
-            // initSimulation() will be called after successful password entry
+            // Defer canvas sizing and simulation init to ensure correct dimensions are read
+            requestAnimationFrame(() => {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+                // initSimulation() will be called after successful password entry
+            });
         };
 
         // Password check logic
