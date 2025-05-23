@@ -6,6 +6,90 @@
     <title>LLM Learning App</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Default (Local) Theme Variables */
+        :root {
+            --body-bg-start: #0F172A;
+            --body-bg-end: #020617;
+            --app-bg: #1E293B;
+            --header-bg-start: #1A202C;
+            --header-bg-end: #2D3748;
+            --border-color: #334155;
+            --text-primary: #E2E8F0;
+            --text-secondary: #CBD5E1;
+            --text-tertiary: #9CA3AF;
+            --accent-color: #2DD4BF; /* Teal */
+            --canvas-bg: #0D1117;
+            --canvas-border: #475569;
+            --toggle-bg: #2D3A4B;
+            --toggle-active-bg: #2DD4BF;
+            --toggle-active-text: #0D1117;
+            --toggle-hover-bg: #334155;
+            --toggle-default-text: #94A3B8;
+            --card-bg: #1F2937;
+            --card-border: #374151;
+            --button-primary-bg: #6366F1; /* Indigo */
+            --button-primary-hover: #4F46E5;
+            --button-secondary-bg: #FBBF24; /* Amber */
+            --button-secondary-text: #1F2937;
+            --button-secondary-border: #D97706;
+            --button-secondary-hover: #D97706;
+            --button-danger-bg: #EF4444; /* Red */
+            --button-danger-hover: #DC2626;
+            --radio-bg: #2D3A4B;
+            --radio-border: #475569;
+            --radio-hover-bg: #334155;
+            --radio-hover-border: #2DD4BF;
+            --radio-checked-color: #2DD4BF;
+            --slider-track: #475569;
+            --slider-thumb: #2DD4BF;
+            --accordion-summary-bg: #2D3A4B;
+            --accordion-summary-hover: #334155;
+            --accordion-open-bg: #334155;
+            --accordion-open-border: #2DD4BF;
+        }
+
+        /* Cloud Theme Variables */
+        body.cloud-theme {
+            --body-bg-start: #1A2A40; /* Lighter blue-gray */
+            --body-bg-end: #0A1420;   /* Darker blue-gray */
+            --app-bg: #2A3B50;        /* Medium blue-gray */
+            --header-bg-start: #203045;
+            --header-bg-end: #354A60;
+            --border-color: #4A607A;
+            --text-primary: #E0E8F0;
+            --text-secondary: #C0CADA;
+            --text-tertiary: #8090A0;
+            --accent-color: #6A9BFF; /* A brighter blue for cloud */
+            --canvas-bg: #152030;
+            --canvas-border: #607080;
+            --toggle-bg: #3A4B60;
+            --toggle-active-bg: #6A9BFF;
+            --toggle-active-text: #0D1117;
+            --toggle-hover-bg: #405570;
+            --toggle-default-text: #A0B0C0;
+            --card-bg: #2A3B50;
+            --card-border: #4A607A;
+            --button-primary-bg: #6A9BFF; /* Blue for primary */
+            --button-primary-hover: #4A80E0;
+            --button-secondary-bg: #80E0A0; /* Greenish for secondary */
+            --button-secondary-text: #1F2937;
+            --button-secondary-border: #50B070;
+            --button-secondary-hover: #50B070;
+            --button-danger-bg: #FF6A6A; /* Red for danger */
+            --button-danger-hover: #E04A4A;
+            --radio-bg: #3A4B60;
+            --radio-border: #607080;
+            --radio-hover-bg: #405570;
+            --radio-hover-border: #6A9BFF;
+            --radio-checked-color: #6A9BFF;
+            --slider-track: #607080;
+            --slider-thumb: #6A9BFF;
+            --accordion-summary-bg: #3A4B60;
+            --accordion-summary-hover: #405570;
+            --accordion-open-bg: #405570;
+            --accordion-open-border: #6A9BFF;
+        }
+
         /* Custom CSS for a nicer design */
         body {
             font-family: 'Inter', sans-serif;
@@ -14,38 +98,43 @@
             align-items: center;
             justify-content: flex-start;
             min-height: 100vh;
-            background: linear-gradient(135deg, #0F172A 0%, #020617 100%); /* Deep dark gradient */
-            color: #E2E8F0; /* Lighter off-white text */
+            background: linear-gradient(135deg, var(--body-bg-start) 0%, var(--body-bg-end) 100%);
+            color: var(--text-primary);
             margin: 0;
             padding: 24px;
             box-sizing: border-box;
+            transition: background 0.5s ease-in-out; /* Smooth transition for background */
         }
         #app {
-            background-color: #1E293B; /* Darker blue-gray for main app container */
+            background-color: var(--app-bg);
             border-radius: 2rem; /* More rounded overall container */
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 10px 20px -5px rgba(0, 0, 0, 0.6); /* Stronger, deeper shadow */
             width: 100%;
             max-width: 1400px; /* Even wider for large tablets/desktops */
             overflow: hidden;
-            border: 1px solid #334155; /* Subtle border for definition */
+            border: 1px solid var(--border-color); /* Subtle border for definition */
             display: none; /* Hidden by default until password is entered */
+            transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
         }
         header {
-            background: linear-gradient(90deg, #1A202C 0%, #2D3748 100%); /* Header gradient */
+            background: linear-gradient(90deg, var(--header-bg-start) 0%, var(--header-bg-end) 100%); /* Header gradient */
             padding: 2.5rem; /* More padding */
-            border-bottom: 1px solid #334155;
+            border-bottom: 1px solid var(--border-color);
             text-align: center;
+            transition: background 0.5s ease-in-out, border-color 0.5s ease-in-out;
         }
         h1 {
             font-size: 3.5rem; /* Larger title */
             font-weight: 800; /* Extra bold */
-            color: #2DD4BF; /* Teal accent */
-            text-shadow: 0 0 15px rgba(45, 212, 191, 0.5); /* Subtle glow */
+            color: var(--accent-color); /* Teal accent */
+            text-shadow: 0 0 15px rgba(45, 212, 191, 0.5); /* Subtle glow - needs fixed color or rgb conversion */
             margin-bottom: 1rem;
+            transition: color 0.5s ease-in-out;
         }
         .concept-description-container {
             padding: 2.5rem; /* Padding for the concept description */
-            background-color: #1E293B; /* Match app background */
+            background-color: var(--app-bg); /* Match app background */
+            transition: background-color 0.5s ease-in-out;
         }
         .main-content-area {
             padding: 2.5rem; /* More padding in main content */
@@ -56,14 +145,15 @@
 
         canvas {
             display: block;
-            background-color: #0D1117; /* Very Dark Canvas */
+            background-color: var(--canvas-bg); /* Very Dark Canvas */
             border-radius: 1rem; /* Rounded canvas */
-            border: 2px solid #475569; /* More prominent border */
+            border: 2px solid var(--canvas-border); /* More prominent border */
             box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* Inner shadow for depth */
             width: 100%;
             height: auto;
             min-height: 350px; /* Larger min height for visualizer */
             max-height: 600px; /* Larger max height */
+            transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
         }
 
         /* Buttons */
@@ -75,110 +165,96 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Button shadow */
             font-size: 1rem; /* Larger button text */
         }
+        .btn-primary { background-color: var(--button-primary-bg); color: white; }
         .btn-primary:hover {
-            background-color: #4F46E5;
+            background-color: var(--button-primary-hover);
             transform: translateY(-3px);
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
         }
         .btn-secondary {
-            background-color: #FBBF24; /* Amber */
-            color: #1F2937;
-            border: 1px solid #D97706;
+            background-color: var(--button-secondary-bg);
+            color: var(--button-secondary-text);
+            border: 1px solid var(--button-secondary-border);
         }
         .btn-secondary:hover {
-            background-color: #D97706;
+            background-color: var(--button-secondary-hover);
             transform: translateY(-3px);
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
         }
         .btn-danger {
-            background-color: #EF4444; /* Red */
+            background-color: var(--button-danger-bg); /* Red */
             color: white;
-            border: 1px solid #DC2626;
+            border: 1px solid var(--button-danger-hover);
         }
         .btn-danger:hover {
-            background-color: #DC2626;
+            background-color: var(--button-danger-hover);
             transform: translateY(-3px);
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
         }
 
         /* Cards and Panels */
         .bg-gray-800 {
-            background-color: #1F2937; /* Consistent card background */
+            background-color: var(--card-bg); /* Consistent card background */
             border-radius: 1.5rem; /* More rounded cards */
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Card shadow */
-            border: 1px solid #374151;
+            border: 1px solid var(--card-border);
+            transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
         }
-        .text-gray-100 { color: #F3F4F6; } /* Lighter headings */
-        .text-gray-300 { color: #D1D5DB; } /* Lighter body text */
-        .text-gray-400 { color: #9CA3AF; } /* Even lighter for descriptions */
-        .text-teal-300 { color: #4FD1C5; } /* Teal for stats */
-        .text-teal-400 { color: #2DD4BF; } /* Brighter teal for titles */
+        .text-gray-100 { color: var(--text-primary); transition: color 0.5s ease-in-out; } /* Lighter headings */
+        .text-gray-300 { color: var(--text-secondary); transition: color 0.5s ease-in-out; } /* Lighter body text */
+        .text-gray-400 { color: var(--text-tertiary); transition: color 0.5s ease-in-out; } /* Even lighter for descriptions */
+        .text-teal-300 { color: var(--accent-color); transition: color 0.5s ease-in-out; } /* Teal for stats */
+        .text-teal-400 { color: var(--accent-color); transition: color 0.5s ease-in-out; } /* Brighter teal for titles */
 
         /* Stats Cards */
-        .stats-value { font-size: 2.5rem; font-weight: 700; line-height: 1.2; color: #2DD4BF; } /* Larger, teal stats */
-        .stats-label { font-size: 1rem; color: #9CA3AF; margin-top: 0.5rem; }
+        .stats-value { color: var(--accent-color); } /* Larger, teal stats */
+        .stats-label { color: var(--text-tertiary); }
 
         /* Resource Gauges */
         .resource-gauge-container {
             padding: 1.5rem;
             border-radius: 1.5rem;
         }
-        .resource-label { font-size: 1rem; color: #9CA3AF; margin-bottom: 0.5rem; }
-        .resource-bar { height: 25px; background-color: #4B5563; border-radius: 0.75rem; overflow: hidden; margin-top: 0.5rem; }
-        .resource-bar > div { height: 100%; transition: width 0.5s ease-out; border-radius: 0.75rem; }
-        #cpuBarVal { background-color: #FBBF24; } /* Amber */
-        #ramBarVal { background-color: #60A5FA; } /* Blue */
+        .resource-label { color: var(--text-tertiary); }
+        .resource-bar { background-color: var(--canvas-border); }
+        #cpuBarVal { background-color: var(--button-secondary-bg); } /* Amber */
+        #ramBarVal { background-color: var(--button-primary-bg); } /* Blue */
 
         /* Context Display */
         .context-display {
-            background-color: #0D1117;
-            border: 2px solid #475569;
-            border-radius: 1rem;
-            padding: 1rem;
-            height: 120px; /* Increased height */
-            overflow-y: auto;
-            font-size: 0.9rem; /* Larger font */
-            line-height: 1.8;
-            color: #A0AEC0;
-            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+            background-color: var(--canvas-bg);
+            border: 2px solid var(--canvas-border);
+            color: var(--text-secondary);
+            transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out, color 0.5s ease-in-out;
         }
         .prompt-frag-text { color: #34D399; margin-right: 8px; font-weight: 700;} /* Brighter green, bolder */
         .output-token-text { color: #F472B6; margin-right: 8px; font-weight: 700;} /* Brighter pink, bolder */
 
         /* Inference Mode Toggle */
         .inference-mode-toggle {
-            background-color: #1F2937;
-            border-radius: 1.5rem;
-            padding: 1.25rem 2rem;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            border: 1px solid #374151;
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
         }
         .inference-mode-toggle label {
             font-size: 1.1rem; /* Larger toggle labels */
             font-weight: 600;
-            color: #E2E8F0;
+            color: var(--text-primary);
             cursor: pointer;
+            transition: color 0.5s ease-in-out;
         }
         .inference-mode-toggle input[type="radio"] {
-            transform: scale(1.4); /* Larger toggle radios */
-            accent-color: #2DD4BF; /* Teal accent */
+            accent-color: var(--accent-color);
+            transition: accent-color 0.5s ease-in-out;
         }
         .inference-mode-toggle input[type="radio"]:checked + label {
-            color: #2DD4BF; /* Highlight checked label with teal */
-            font-weight: 700;
+            color: var(--accent-color);
         }
 
         /* New Toggle Button Styles */
         .toggle-button-group {
-            display: flex;
-            border-radius: 0.75rem;
-            overflow: hidden;
-            border: 2px solid #475569; /* Border for the group */
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--canvas-border);
+            transition: border-color 0.5s ease-in-out;
         }
         .toggle-button {
             padding: 0.8rem 1.8rem;
@@ -186,35 +262,32 @@
             font-size: 1rem;
             cursor: pointer;
             transition: all 0.2s ease;
-            background-color: #2D3A4B; /* Default background */
-            color: #94A3B8; /* Default text color */
+            background-color: var(--toggle-bg); /* Default background */
+            color: var(--toggle-default-text); /* Default text color */
             border: none; /* No individual button borders */
+            transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
         }
         .toggle-button.active {
-            background-color: #2DD4BF; /* Active background color (Teal) */
-            color: #0D1117; /* Dark text for active button */
+            background-color: var(--toggle-active-bg); /* Active background color (Teal) */
+            color: var(--toggle-active-text); /* Dark text for active button */
             box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4); /* Inner shadow for active */
         }
         .toggle-button:hover:not(.active) {
-            background-color: #334155;
-            color: #E2E8F0;
+            background-color: var(--toggle-hover-bg);
+            color: var(--text-primary);
         }
 
 
         /* Tab Styles */
         .tab-buttons {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2.5rem; /* More space below tabs */
-            border-bottom: 2px solid #475569; /* Thicker border */
-            flex-wrap: wrap;
-            gap: 0.75rem; /* Gap between buttons */
+            border-bottom: 2px solid var(--canvas-border); /* Thicker border */
+            transition: border-color 0.5s ease-in-out;
         }
         .tab-button {
-            background-color: #2D3A4B; /* Darker tab background */
-            color: #94A3B8;
+            background-color: var(--toggle-bg); /* Darker tab background */
+            color: var(--toggle-default-text);
             padding: 1rem 1.6rem; /* More padding */
-            border: 1px solid #475569;
+            border: 1px solid var(--canvas-border);
             border-bottom: none;
             border-top-left-radius: 1rem;
             border-top-right-radius: 1rem;
@@ -224,43 +297,47 @@
             font-size: 1.05rem; /* Larger font for tabs */
             white-space: nowrap;
             box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow above tabs */
+            transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
         }
         .tab-button.active {
-            background-color: #0D1117; /* Active tab background */
-            color: #2DD4BF; /* Teal for active tab */
-            border-color: #2DD4BF; /* Teal border for active tab */
+            background-color: var(--canvas-bg); /* Active tab background */
+            color: var(--accent-color); /* Teal for active tab */
+            border-color: var(--accent-color); /* Teal border for active tab */
             border-bottom-color: transparent;
             transform: translateY(-4px); /* More pronounced lift for active tab */
             box-shadow: 0 -8px 15px rgba(0, 0, 0, 0.4);
         }
         .tab-button:not(.active):hover {
-            background-color: #334155;
-            color: #E2E8F0;
+            background-color: var(--toggle-hover-bg);
+            color: var(--text-primary);
         }
         .tab-content {
-            background-color: #0D1117; /* Content area background */
+            background-color: var(--canvas-bg); /* Content area background */
             border-radius: 1.5rem;
-            border: 2px solid #475569;
+            border: 2px solid var(--canvas-border);
             padding: 2.5rem; /* Increased padding */
             box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.4); /* Inner shadow for content area */
+            transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
         }
 
         /* Fieldset and Radio Grid */
         .fieldset-card {
-            background-color: #1F2937;
-            border: 1px solid #374151;
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
             border-radius: 1.25rem; /* Rounded fieldsets */
             padding: 1.5rem;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
             margin-bottom: 1.5rem; /* Space between fieldsets */
+            transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
         }
         .legend-title {
             font-size: 1.15rem; /* Larger legend title */
             font-weight: 700;
-            color: #2DD4BF; /* Teal for legend */
+            color: var(--accent-color); /* Teal for legend */
             text-align: center;
             margin-bottom: 1rem;
             padding: 0 1rem;
+            transition: color 0.5s ease-in-out;
         }
         .radio-grid {
             display: grid;
@@ -270,29 +347,31 @@
         .radio-grid div {
             display: flex;
             align-items: center;
-            background-color: #2D3A4B; /* Background for each radio item */
+            background-color: var(--radio-bg); /* Background for each radio item */
             padding: 0.8rem 1rem;
             border-radius: 0.75rem;
-            border: 1px solid #475569;
+            border: 1px solid var(--radio-border);
             cursor: pointer;
             transition: all 0.2s ease;
         }
         .radio-grid div:hover {
-            background-color: #334155;
-            border-color: #2DD4BF; /* Teal border on hover */
+            background-color: var(--radio-hover-bg);
+            border-color: var(--radio-hover-border); /* Teal border on hover */
         }
         .radio-grid input[type="radio"] {
             transform: scale(1.1); /* Slightly larger radio buttons */
-            accent-color: #2DD4BF; /* Teal accent */
+            accent-color: var(--radio-checked-color); /* Teal accent */
             margin-right: 0.6rem;
+            transition: accent-color 0.5s ease-in-out;
         }
         .radio-grid input[type="radio"]:checked + label {
-            color: #2DD4BF; /* Highlight checked label */
+            color: var(--radio-checked-color); /* Highlight checked label */
             font-weight: 600;
         }
         .radio-grid label {
             font-size: 0.95rem; /* Slightly larger radio labels */
-            color: #E2E8F0;
+            color: var(--text-primary);
+            transition: color 0.5s ease-in-out;
         }
 
         /* Sliders */
@@ -300,12 +379,13 @@
             -webkit-appearance: none;
             appearance: none;
             height: 12px; /* Thicker slider */
-            background: #475569;
+            background: var(--slider-track);
             border-radius: 6px;
             outline: none;
             opacity: 0.9;
             transition: opacity .2s;
             box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+            transition: background 0.5s ease-in-out;
         }
         .slider-custom::-webkit-slider-thumb {
             -webkit-appearance: none;
@@ -313,30 +393,32 @@
             width: 28px; /* Larger thumb */
             height: 28px; /* Larger thumb */
             border-radius: 50%;
-            background: #2DD4BF; /* Teal thumb */
+            background: var(--slider-thumb); /* Teal thumb */
             cursor: pointer;
             transition: background .2s, transform .2s;
             margin-top: -8px; /* Center thumb vertically */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-            border: 2px solid #1F2937; /* Dark border for thumb */
+            border: 2px solid var(--card-bg); /* Dark border for thumb */
+            transition: background 0.5s ease-in-out, border-color 0.5s ease-in-out;
         }
         .slider-custom::-webkit-slider-thumb:hover {
-            background: #20B2AA; /* Darker teal on hover */
-            transform: scale(1.05);
+            background: var(--button-primary-hover);
+            transition: background 0.5s ease-in-out;
         }
         .slider-custom::-moz-range-thumb {
             width: 28px;
             height: 28px;
             border-radius: 50%;
-            background: #2DD4BF;
+            background: var(--slider-thumb);
             cursor: pointer;
             transition: background .2s, transform .2s;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-            border: 2px solid #1F2937;
+            border: 2px solid var(--card-bg);
+            transition: background 0.5s ease-in-out, border-color 0.5s ease-in-out;
         }
         .slider-custom::-moz-range-thumb:hover {
-            background: #20B2AA;
-            transform: scale(1.05);
+            background: var(--button-primary-hover);
+            transition: background 0.5s ease-in-out;
         }
 
         /* Accordion Group */
@@ -346,32 +428,34 @@
             gap: 1rem; /* Space between accordion items */
         }
         .accordion-item {
-            background-color: #1F2937;
-            border: 1px solid #374151;
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
             border-radius: 1rem;
             overflow: hidden;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
         }
         .accordion-summary {
             padding: 1.25rem 1.5rem;
             font-weight: 700;
-            color: #E2E8F0;
-            background-color: #2D3A4B; /* Darker header for summary */
-            border-bottom: 1px solid #374151;
+            color: var(--text-primary);
+            background-color: var(--accordion-summary-bg); /* Darker header for summary */
+            border-bottom: 1px solid var(--card-border);
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
             transition: all 0.2s ease;
             font-size: 1.05rem;
+            transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
         }
         .accordion-item[open] > .accordion-summary {
-            background-color: #334155; /* Even darker when open */
-            border-bottom-color: #2DD4BF; /* Teal line when open */
-            color: #2DD4BF;
+            background-color: var(--accordion-open-bg); /* Even darker when open */
+            border-bottom-color: var(--accordion-open-border); /* Teal line when open */
+            color: var(--accent-color);
         }
         .accordion-summary:hover {
-            background-color: #334155;
+            background-color: var(--accordion-summary-hover);
         }
         .accordion-item[open] .accordion-summary::after {
             content: "−";
@@ -380,17 +464,19 @@
             content: "+";
             font-size: 1.5em;
             margin-left: 1rem;
-            color: #9CA3AF;
+            color: var(--text-tertiary);
+            transition: color 0.5s ease-in-out;
         }
         .accordion-item[open] .accordion-summary::after {
-            color: #2DD4BF;
+            color: var(--accent-color);
         }
         .accordion-content {
             padding: 1.5rem;
-            background-color: #1F2937;
-            color: #CBD5E1;
+            background-color: var(--card-bg);
+            color: var(--text-secondary);
             font-size: 0.95rem;
             line-height: 1.7;
+            transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
         }
         .accordion-content ul {
             list-style: disc;
@@ -402,21 +488,24 @@
             margin-top: 0.5rem;
         }
         .accordion-content strong {
-            color: #93C5FD; /* Lighter blue for emphasis */
+            color: var(--accent-color); /* Lighter blue for emphasis */
+            transition: color 0.5s ease-in-out;
         }
         .note {
             font-size: 0.85rem;
-            color: #A0AEC0;
+            color: var(--text-tertiary);
             margin-left: 0.8rem;
+            transition: color 0.5s ease-in-out;
         }
 
         /* General Concept Description */
         .concept-description {
             font-size: 0.95rem;
-            color: #A0AEC0;
+            color: var(--text-tertiary);
             margin-top: 1rem;
             min-height: 35px;
             line-height: 1.6;
+            transition: color 0.5s ease-in-out;
         }
 
         /* New layout for controls and stats section */
@@ -514,50 +603,54 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #0F172A 0%, #020617 100%);
+            background: linear-gradient(135deg, var(--body-bg-start) 0%, var(--body-bg-end) 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             z-index: 1000;
+            transition: background 0.5s ease-in-out;
         }
         #password-form {
-            background-color: #1E293B;
+            background-color: var(--app-bg);
             padding: 3rem;
             border-radius: 1.5rem;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
             text-align: center;
             max-width: 400px;
             width: 90%;
-            border: 1px solid #334155;
+            border: 1px solid var(--border-color);
+            transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
         }
         #password-form h2 {
             font-size: 2rem;
             font-weight: 700;
-            color: #2DD4BF;
+            color: var(--accent-color);
             margin-bottom: 1.5rem;
+            transition: color 0.5s ease-in-out;
         }
         #password-input {
             width: 100%;
             padding: 1rem;
             margin-bottom: 1.5rem;
             border-radius: 0.75rem;
-            border: 2px solid #475569;
-            background-color: #0D1117;
-            color: #E2E8F0;
+            border: 2px solid var(--canvas-border);
+            background-color: var(--canvas-bg);
+            color: var(--text-primary);
             font-size: 1.2rem;
             text-align: center;
             box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
             outline: none;
+            transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out, color 0.5s ease-in-out;
         }
         #password-input:focus {
-            border-color: #2DD4BF;
+            border-color: var(--accent-color);
         }
         #password-submit {
             width: 100%;
             padding: 1rem;
             border-radius: 0.75rem;
-            background-color: #6366F1;
+            background-color: var(--button-primary-bg);
             color: white;
             font-weight: 600;
             font-size: 1.1rem;
@@ -567,12 +660,12 @@
             border: none;
         }
         #password-submit:hover {
-            background-color: #4F46E5;
+            background-color: var(--button-primary-hover);
             transform: translateY(-3px);
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
         }
         #password-error {
-            color: #EF4444;
+            color: var(--button-danger-bg);
             margin-top: 1rem;
             font-size: 0.9rem;
             font-weight: 500;
@@ -608,17 +701,17 @@
             </div>
 
             <div class="tab-buttons">
-                <button class="tab-button" data-tab="recommendations">LLM Recommendations</button>
+                <button class="tab-button active" data-tab="recommendations">LLM Recommendations</button>
                 <button class="tab-button" data-tab="model-details">Model Details</button>
                 <button class="tab-button" data-tab="companies">Companies & AI</button>
                 <button class="tab-button" data-tab="people">Top People</button>
                 <button class="tab-button" data-tab="frameworks-finetuning">Frameworks & Fine-tuning</button>
                 <button class="tab-button" data-tab="enterprise-deployment">Enterprise Deployment</button>
                 <button class="tab-button" data-tab="settings">Simulation Settings</button>
-                <button class="tab-button active" data-tab="simulation">Simulation</button>
+                <button class="tab-button" data-tab="simulation">Simulation</button>
             </div>
 
-            <div id="simulation-tab" class="tab-content active">
+            <div id="simulation-tab" class="tab-content hidden">
                 <h3 class="text-2xl font-bold text-teal-400 mb-6 text-center">Simulation Overview & Controls</h3>
                 
                 <div class="concept-description-container">
@@ -1329,7 +1422,7 @@
                             <div class="accordion-content">
                                 <ul>
                                     <li><strong>Origin:</strong> London, UK.</li>
-                                    <li><strong>Key Affiliations/Discoveries:</strong> CEO of Google DeepMind (London, UK, and Mountain View, California, USA). Co-founder of DeepMind. PhD in Cognitive Neuroscience from University College London.</li>
+                                    <li><strong>Key Affiliations/Discoveries:</b> CEO of Google DeepMind (London, UK, and Mountain View, California, USA). Co-founder of DeepMind. PhD in Cognitive Neuroscience from University College London.</li>
                                     <li><strong>Contribution:</strong> CEO of Google DeepMind, overseeing the development of advanced AI, including the Gemini family of models.</li>
                                     <li><strong>Impact:</strong> Leads efforts in foundational AI research and its integration into Google's products and cloud services.</li>
                                 </ul>
@@ -1436,7 +1529,7 @@
                                 <ul>
                                     <li><strong>Purpose:</strong> Open Neural Network Exchange (ONNX) is an open format for representing machine learning models. ONNX Runtime is a high-performance inference engine for ONNX models.</li>
                                     <li><strong>Origin:</strong> ONNX was initially developed by Microsoft and Facebook (Meta).</li>
-                                    <li><strong>Key Features:</strong> Enables models to be trained in one framework (e.g., PyTorch) and deployed efficiently in another environment (e.g., a C++ application on a local device). Supports various hardware accelerators.</li>
+                                    <li><strong>Key Features:</b> Enables models to be trained in one framework (e.g., PyTorch) and deployed efficiently in another environment (e.g., a C++ application on a local device). Supports various hardware accelerators.</li>
                                     <li><strong>Local Use:</strong> Provides a standardized way to deploy LLMs locally across different operating systems and hardware, ensuring consistent performance and compatibility.</li>
                                 </ul>
                             </div>
@@ -1452,7 +1545,7 @@
                             <div class="accordion-content">
                                 <ul>
                                     <li><strong>Origin:</strong> TensorFlow by Google (Mountain View, California, USA); PyTorch by Facebook (Meta) (Menlo Park, California, USA).</li>
-                                    <li><strong>Purpose:</strong> Open-source machine learning frameworks for building and training deep learning models, including LLMs, often in cloud environments.</li>
+                                    <li><strong>Purpose:</b> Open-source machine learning frameworks for building and training deep learning models, including LLMs, often in cloud environments.</li>
                                     <li><strong>Key Features:</strong> Extensive libraries, large communities, support for distributed training on cloud GPUs/TPUs, flexible API for custom model architectures.</li>
                                     <li><strong>Cloud Use:</strong> Used by cloud providers and developers to train and fine-tune foundational models, and to build custom AI applications that run on cloud infrastructure.</li>
                                 </ul>
@@ -1529,7 +1622,7 @@
                             <div class="accordion-content">
                                 <ul>
                                     <li><strong>Benefit:</strong> Eliminates recurring API costs associated with cloud LLMs, leading to predictable operational expenses after initial hardware investment.</li>
-                                    <li><strong>Mechanism:</strong> Once hardware is procured and models are deployed, inference costs are primarily electricity and maintenance, not per-token usage fees.</li>
+                                    <li><strong>Mechanism:</b> Once hardware is procured and models are deployed, inference costs are primarily electricity and maintenance, not per-token usage fees.</li>
                                     <li><strong>Use Case:</b> High-volume internal applications like customer support automation, internal knowledge base querying, code generation for developers.</li>
                                 </ul>
                             </div>
@@ -1596,7 +1689,7 @@
                                 <ul>
                                     <li><strong>Benefit:</strong> Immediate access to the latest, most powerful, and often proprietary LLMs (e.g., GPT-4o, Claude Opus, Gemini 1.5 Pro) without needing to host them.</li>
                                     <li><strong>Mechanism:</strong> Cloud providers offer these models via APIs, allowing businesses to integrate cutting-edge AI into their applications with minimal effort.</li>
-                                    <li><strong>Use Case:</strong> Applications requiring the highest accuracy, most creative outputs, or multimodal capabilities that are too large or complex to run locally.</li>
+                                    <li><strong>Use Case:</b> Applications requiring the highest accuracy, most creative outputs, or multimodal capabilities that are too large or complex to run locally.</li>
                                 </ul>
                             </div>
                         </details>
@@ -1970,7 +2063,9 @@
 
             // Outer glow effect
             ctx.shadowBlur = 30;
-            ctx.shadowColor = '#8b5cf6'; // Violet glow
+            // Get accent color from CSS variable for dynamic glow
+            const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim();
+            ctx.shadowColor = accentColor;
 
             // Draw multiple concentric circles for the core layers
             for (let i = 0; i < 3; i++) {
@@ -1980,16 +2075,26 @@
                     continue;
                 }
                 const alpha = 0.8 - (i * 0.2);
+                // Use accent color for core fill
                 ctx.beginPath();
                 ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(139, 92, 246, ${alpha})`; // Violet
+                ctx.fillStyle = `rgba(${hexToRgb(accentColor).r}, ${hexToRgb(accentColor).g}, ${hexToRgb(accentColor).b}, ${alpha})`;
                 ctx.fill();
-                ctx.strokeStyle = `rgba(124, 58, 237, ${alpha})`; // Darker violet border
+                ctx.strokeStyle = `rgba(${hexToRgb(accentColor).r}, ${hexToRgb(accentColor).g}, ${hexToRgb(accentColor).b}, ${alpha * 0.8})`; // Darker border
                 ctx.lineWidth = 2;
                 ctx.stroke();
             }
 
             ctx.shadowBlur = 0; // Reset shadow
+        }
+
+        // Helper function to convert hex to RGB for dynamic alpha
+        function hexToRgb(hex) {
+            const bigint = parseInt(hex.slice(1), 16);
+            const r = (bigint >> 16) & 255;
+            const g = (bigint >> 8) & 255;
+            const b = bigint & 255;
+            return { r, g, b };
         }
 
         // Update resource gauges
@@ -2123,6 +2228,7 @@
                 cloudContextWindowValueElem.textContent = cloudContextWindow;
             }
             updateResourceGauges();
+            drawEngineCore(); // Redraw canvas to update core color
         }
 
         // Function to update tab content visibility based on inference mode
@@ -2132,12 +2238,10 @@
             tabs.forEach(tabId => {
                 const localContent = document.getElementById(`${tabId}-local-content`);
                 const cloudContent = document.getElementById(`${tabId}-cloud-content`);
-                const mainContent = document.getElementById(`${tabId}`); // For tabs that don't have local/cloud split
-
-                if (localContent) localContent.style.display = inferenceMode === 'local' ? 'block' : 'none';
-                if (cloudContent) cloudContent.style.display = inferenceMode === 'cloud' ? 'block' : 'none';
-                if (mainContent && !localContent && !cloudContent) { // If it's a tab without local/cloud split
-                    mainContent.classList.remove('hidden'); // Ensure it's visible if it's the active tab
+                
+                if (localContent && cloudContent) {
+                    localContent.style.display = inferenceMode === 'local' ? 'block' : 'none';
+                    cloudContent.style.display = inferenceMode === 'cloud' ? 'block' : 'none';
                 }
             });
         }
@@ -2160,6 +2264,7 @@
             inferenceMode = 'local';
             modeLocalBtn.classList.add('active');
             modeCloudBtn.classList.remove('active');
+            document.body.classList.remove('cloud-theme'); // Ensure local theme is active
 
             // Apply default local settings (e.g., "Standard Laptop" preset)
             applyPreset("Standard Laptop");
@@ -2359,18 +2464,22 @@
             inferenceMode = 'local';
             modeLocalBtn.classList.add('active');
             modeCloudBtn.classList.remove('active');
+            document.body.classList.remove('cloud-theme'); // Remove cloud theme
             updateTabContentVisibility();
             updateSimulationParameters();
             updateDescriptions();
+            drawEngineCore(); // Redraw canvas to update core color
         });
 
         modeCloudBtn.addEventListener('click', () => {
             inferenceMode = 'cloud';
             modeCloudBtn.classList.add('active');
             modeLocalBtn.classList.remove('active');
+            document.body.classList.add('cloud-theme'); // Add cloud theme
             updateTabContentVisibility();
             updateSimulationParameters();
             updateDescriptions();
+            drawEngineCore(); // Redraw canvas to update core color
         });
 
 
@@ -2484,11 +2593,11 @@
                 appContainer.style.display = 'block'; // Show the main app
                 initSimulation(); // Initialize the simulation after successful login
 
-                // Manually activate the "Simulation" tab after login
+                // Manually activate the "LLM Recommendations" tab after login
                 document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
                 document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
-                document.querySelector('.tab-button[data-tab="simulation"]').classList.add('active');
-                document.getElementById('simulation-tab').classList.remove('hidden');
+                document.querySelector('.tab-button[data-tab="recommendations"]').classList.add('active');
+                document.getElementById('recommendations-tab').classList.remove('hidden');
 
                 animate(performance.now()); // Start the animation loop
             } else {
